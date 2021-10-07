@@ -45,7 +45,7 @@ void calc_changeA1(void)
 
   char *FileName = "result_changeA1.csv";
   FILE *fp = fopen(FileName, "w");
-  fprintf(fp, "A1, sigma1, sigma2, delta1, delta2\n");
+  fprintf(fp, "A1,sigma1,sigma2,delta1,delta2\n");
 
   for (int i=0; i < N+1; i++)
   {
@@ -71,7 +71,7 @@ void calc_changeL1(void)
 
   char *FileName = "result_changeL1.csv";
   FILE *fp =fopen(FileName, "w");
-  fprintf(fp, "L1, sigma1, sigma2, delta1, delta2\n");
+  fprintf(fp, "L1,sigma1,sigma2,delta1,delta2\n");
 
   for(int i=0; i<N+1; i++)
   {
