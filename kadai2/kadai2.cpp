@@ -2,17 +2,17 @@
 #include<math.h>
 
 #define a1 0.0
-#define b1 1.0
+#define b1 5.0
 #define a2 0.0
 #define b2 1.0
 
 double f1(double x)
 {
-  return 1.0/(1.0 + x*x);
+  return std::pow(2,x);
 }
 double f2(double x)
 {
-  return std::exp(-1.0 * x*x);
+  return 1.0/(1.0 + x*x);
 }
 
 double trapezoidal_rule(double a, double b, int n, double (* pfunc)(double))
@@ -78,11 +78,11 @@ void calc_result(void)
 
   char *FileName = "result1.csv";
   FILE *fp = fopen(FileName, "w");
-  fprintf(fp, "n, trapezoidal, midpoint, simpson\n");
+  fprintf(fp, "n,trapezoidal,midpoint,simpson\n");
 
   char *Filename = "result2.csv";
   FILE *gp = fopen(Filename, "w");
-  fprintf(gp, "n, trapezoidal, midpoint, simpson\n");
+  fprintf(gp, "n,trapezoidal,midpoint,simpson\n");
 
   while (n<=n_max){
     double S1 = trapezoidal_rule(a1,b1,n,f1);
