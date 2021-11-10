@@ -3,12 +3,11 @@
 
 #define ans sqrt(M_PI)
 
-#define A -1000.0
-#define B  1000.0
+int W = 1;
+int interval = 1;
+int W_max = 400;
 
-int div_n = 50;
-int div_n_max = 1500;
-int div_n_interval = 10;
+int n = 100;
 
 double f(double x)
 {
@@ -77,18 +76,18 @@ void calc_result(void)
 {
   char *FileName1 = "result.csv";
   FILE *fp = fopen(FileName1, "w");
-  fprintf(fp, "n,trapezoidal,midpoint,simpson\n");
+  fprintf(fp, "W,trapezoidal,midpoint,simpson\n");
   char *FileName2 = "AbsoluteError.csv";
   FILE *gp = fopen(FileName2, "w");
-  fprintf(gp, "n,trapezoidal,midpoint,simpson\n");
+  fprintf(gp, "W,trapezoidal,midpoint,simpson\n");
   char *FileName3 = "RelativeError.csv";
   FILE *hp = fopen(FileName3, "w");
-  fprintf(hp, "n,trapezoidal,midpoint,simpson\n");
+  fprintf(hp, "W,trapezoidal,midpoint,simpson\n");
 
-  while (div_n <= div_n_max){
-    double S1 = trapezoidal_rule(A,B,div_n,f);
-    double S2 = midpoint_rule(A,B,div_n,f);
-    double S3 = simpson_rule(A,B,div_n,f);
+  while (W <= W_max){
+    double S1 = trapezoidal_rule(-W,W,n,f);
+    double S2 = midpoint_rule(-W,W,n,f);
+    double S3 = simpson_rule(-W,W,n,f);
 
     double AE1 = abs(ans - S1);
     double AE2 = abs(ans - S2);
@@ -98,11 +97,11 @@ void calc_result(void)
     double RE2 = abs((ans - S2) / ans);
     double RE3 = abs((ans - S3) / ans);
 
-    fprintf(fp, "%d, %f, %f, %f\n", div_n, S1, S2, S3);
-    fprintf(gp, "%d, %f, %f, %f\n", div_n, AE1, AE2, AE3);
-    fprintf(hp, "%d, %f, %f, %f\n", div_n, RE1, RE2, RE3);
+    fprintf(fp, "%d, %f, %f, %f\n", W, S1, S2, S3);
+    fprintf(gp, "%d, %f, %f, %f\n", W, AE1, AE2, AE3);
+    fprintf(hp, "%d, %f, %f, %f\n", W, RE1, RE2, RE3);
 
-    div_n += div_n_interval;
+    W += interval;
   }
 }
 
