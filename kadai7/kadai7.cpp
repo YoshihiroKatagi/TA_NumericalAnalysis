@@ -3,7 +3,8 @@
 
 double answer(double t) {
   // 解析解
-  return (1.0/2.0 * (exp(sqrt(-3) * t) + exp(-1 * sqrt(-3) * t)));
+  // return (1.0/2.0 * (exp(sqrt(-3) * t) + exp(-1 * sqrt(-3) * t)));
+  return cos(sqrt(3.0)*t);
 }
 
 double euler(double x1, double dx, double dt) {
